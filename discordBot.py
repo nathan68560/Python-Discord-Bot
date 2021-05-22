@@ -269,4 +269,4 @@ async def on_message(message):
         await bot.process_commands(message)
 
 # Run bot
-bot.run("ODQ0OTg0MDcyMjI0MjQzNzkz.YKaWvQ.2FuKmbikkq-OSI9g74RFwCBqEGk")
+bot.run("Bot_Access_Token")
