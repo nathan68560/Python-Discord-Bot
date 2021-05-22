@@ -1,5 +1,5 @@
 # Python-Discord-Bot
-A small discord bot I made in python with discord.py to learn the python programming language.
+A small discord bot with some mini-games that I made in python with discord.py to learn the python programming language.
 
 ## Functionalities
 - The command **!morpion** give the commands used to start, play and stop a morpion game *(Tic Tac Toe)* agaisnt the bot.
