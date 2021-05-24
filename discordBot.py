@@ -82,11 +82,11 @@ async def morpion(ctx):
 async def morpionAI(ctx):
     global table, play
     
-    await ctx.send(f'{ctx.author.mention} à joué :\n {table[0]} | {table[1]} | {table[2]} \n {table[3]} | {table[4]} | {table[5]} \n {table[6]} | {table[7]} | {table[8]} ')
     if not await morpionWin(ctx):
         x = randint(0, 8)
         if table[x] == ' ':
             table[x] = 'x'
+            await ctx.send(f'{ctx.author.mention} à joué :\n {table[0]} | {table[1]} | {table[2]} \n {table[3]} | {table[4]} | {table[5]} \n {table[6]} | {table[7]} | {table[8]} ')
             await ctx.send(f'{bot.user.mention} à joué :\n {table[0]} | {table[1]} | {table[2]} \n {table[3]} | {table[4]} | {table[5]} \n {table[6]} | {table[7]} | {table[8]} ')
         elif table[x] == 'x' or table[x] == 'o':
             await morpionAI(ctx)
@@ -195,12 +195,12 @@ async def bataille(ctx):
         for p in places:
             if p in ctx.message.content.lower() and p in botField:
                 botField.remove(p)
-                await ctx.send(f'{ctx.author.mention} Un navire adverse à été détruit en {p} ! {len(botField)-6}/6 de détruit ! ')
+                await ctx.send(f'{ctx.author.mention} Un navire adverse à été détruit en {p} ! {6-len(botField)}/6 de détruit ! ')
                 if not await batailleWin(ctx):
                     await batailleBot(ctx)
                 return True
             elif p in ctx.message.content.lower():
-                await ctx.send(f'{ctx.author.mention} Aucun navire adverse en {p}... {len(botField)-6}/6 de détruit !')
+                await ctx.send(f'{ctx.author.mention} Aucun navire adverse en {p}... {6-len(botField)}/6 de détruit !')
                 await batailleBot(ctx)
                 return True
         await ctx.send(f'{ctx.author.mention} Mauvaise commande, cette case n\'existe pas !')
@@ -229,9 +229,9 @@ async def batailleBot(ctx):
     c = places[randint(0, 35)]
     if c in pField:
         pField.remove(c)
-        await ctx.send(f'{ctx.author.mention} Notre navire en {c} à été détruit ! Il nous reste {len(pField)-6}/6 navires...')
+        await ctx.send(f'{ctx.author.mention} Notre navire en {c} à été détruit ! Il nous reste {6-len(pField)} navires...')
     else:
-        await ctx.send(f'{ctx.author.mention} Un missile à été tiré en {c}, aucun de nos navires touchés... Il nous reste {len(pField)-6}/6 navires...')
+        await ctx.send(f'{ctx.author.mention} Un missile à été tiré en {c}, aucun de nos navires touchés... Il nous reste {6-len(pField)} navires...')
     
     await batailleWin(ctx)
 
