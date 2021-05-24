@@ -229,9 +229,9 @@ async def batailleBot(ctx):
     c = places[randint(0, 35)]
     if c in pField:
         pField.remove(c)
-        await ctx.send(f'{ctx.author.mention} Notre navire en {c} à été détruit ! Il nous reste {6-len(pField)} navires...')
+        await ctx.send(f'{ctx.author.mention} Notre navire en {c} à été détruit ! Il nous reste {len(pField)} navires...')
     else:
-        await ctx.send(f'{ctx.author.mention} Un missile à été tiré en {c}, aucun de nos navires touchés... Il nous reste {6-len(pField)} navires...')
+        await ctx.send(f'{ctx.author.mention} Un missile à été tiré en {c}, aucun de nos navires touchés... Il nous reste {len(pField)} navires...')
     
     await batailleWin(ctx)
 
